@@ -17,8 +17,10 @@ jobs:
         with:
           python-version: 3.9
 
-      - name: Clone sphinx-apidoc branch
-        run: git clone "https://github.com/$GITHUB_REPOSITORY.git" --branch sphinx-apidoc --single-branch sphinx-apidoc
+      - uses: "actions/checkout@v2"
+        with:
+          ref: "sphinx-apidoc"
+          path: "sphinx-apidoc"
       - name: Autogen apidoc
         run: ./sphinx-apidoc/update_sphinx_apidoc.py --py-src=httpx/ --doc-root=sphinx-apidoc/sphinx-doc/
       - name: Sphinx build
