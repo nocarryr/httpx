@@ -22,19 +22,28 @@ jobs:
           ref: "sphinx-apidoc"
           path: "sphinx-apidoc"
       - name: Autogen apidoc
-        run: ./sphinx-apidoc/update_sphinx_apidoc.py --py-src=httpx/ --doc-root=sphinx-apidoc/sphinx-doc/
+        run: |
+          ls
+          ls $PY_SRC
+          ls $DOC_ROOT
+          ./sphinx-apidoc/update_sphinx_apidoc.py --py-src=$PY_SRC --doc-root=$DOC_ROOT
+        env:
+          DOC_ROOT: ${{ github.workspace }}/sphinx-apidoc/sphinx-doc
+          PY_SRC: ${{ github.workspace }}/httpx
       - name: Sphinx build
         run: make html
         working-directory: ${{ github.workspace }}/sphinx-apidoc/sphinx-doc
       - name: Deploy to gh-pages
         run: |
           git clone https://github.com/your_git/repository.git --branch gh-pages --single-branch gh-pages
-          cp -r sphinx-apidoc/sphinx-doc/build/html/* gh-pages/
+          cp -r $DOC_ROOT/build/html/* gh-pages/
           cd gh-pages
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add .
           git commit -m "Update documentation" -a || true
+        env:
+          DOC_ROOT: ${{ github.workspace }}/sphinx-apidoc/sphinx-doc
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
