@@ -1,42 +1,41 @@
 name:
   'Build Sphinx Autodoc'
 
-  on:
-    push:
-      branches: ["master", "sphinx-apidoc"]
+on:
+  push:
+    branches: ["master", "sphinx-apidoc"]
 
-  jobs:
-    build:
-      name: "Build"
-      runs-on: "ubuntu-latest"
+jobs:
+  build:
+    runs-on: "ubuntu-latest"
 
-      steps:
-        - uses: "actions/checkout@v2"
-          with:
-            ref: "master"
-        - uses: "actions/setup-python@v2"
-          with:
-            python-version: 3.9
+    steps:
+      - uses: "actions/checkout@v2"
+        with:
+          ref: "master"
+      - uses: "actions/setup-python@v2"
+        with:
+          python-version: 3.9
 
-        - name: Clone sphinx-apidoc branch
-          run: git clone "https://github.com/$GITHUB_REPOSITORY.git" --branch sphinx-apidoc --single-branch sphinx-apidoc
-        - name: Autogen apidoc
-          run: ./sphinx-apidoc/update_sphinx_apidoc.py --py-src=httpx/ --doc-root=sphinx-apidoc/sphinx-doc/
-        - name: Sphinx build
-          run: make html
-          working-directory: ${{ github.workspace }}/sphinx-apidoc/sphinx-doc
-        - name: Deploy to gh-pages
-          run: |
-            git clone https://github.com/your_git/repository.git --branch gh-pages --single-branch gh-pages
-            cp -r sphinx-apidoc/sphinx-doc/build/html/* gh-pages/
-            cd gh-pages
-            git config --local user.email "action@github.com"
-            git config --local user.name "GitHub Action"
-            git add .
-            git commit -m "Update documentation" -a || true
-        - name: Push changes
-          uses: ad-m/github-push-action@master
-          with:
-            branch: gh-pages
-            directory: gh-pages
-            github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Clone sphinx-apidoc branch
+        run: git clone "https://github.com/$GITHUB_REPOSITORY.git" --branch sphinx-apidoc --single-branch sphinx-apidoc
+      - name: Autogen apidoc
+        run: ./sphinx-apidoc/update_sphinx_apidoc.py --py-src=httpx/ --doc-root=sphinx-apidoc/sphinx-doc/
+      - name: Sphinx build
+        run: make html
+        working-directory: ${{ github.workspace }}/sphinx-apidoc/sphinx-doc
+      - name: Deploy to gh-pages
+        run: |
+          git clone https://github.com/your_git/repository.git --branch gh-pages --single-branch gh-pages
+          cp -r sphinx-apidoc/sphinx-doc/build/html/* gh-pages/
+          cd gh-pages
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "Update documentation" -a || true
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          branch: gh-pages
+          directory: gh-pages
+          github_token: ${{ secrets.GITHUB_TOKEN }}
