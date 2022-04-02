@@ -1,0 +1,8 @@
+httpx.\_multipart module
+========================
+
+.. automodule:: httpx._multipart
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:

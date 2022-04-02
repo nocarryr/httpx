@@ -1,0 +1,8 @@
+httpx.\_transports.base module
+==============================
+
+.. automodule:: httpx._transports.base
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:

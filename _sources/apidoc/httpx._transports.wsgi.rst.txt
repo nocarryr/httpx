@@ -1,0 +1,8 @@
+httpx.\_transports.wsgi module
+==============================
+
+.. automodule:: httpx._transports.wsgi
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:

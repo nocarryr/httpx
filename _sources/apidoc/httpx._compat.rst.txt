@@ -1,0 +1,8 @@
+httpx.\_compat module
+=====================
+
+.. automodule:: httpx._compat
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:

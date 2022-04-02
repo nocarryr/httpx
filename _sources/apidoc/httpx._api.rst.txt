@@ -1,0 +1,8 @@
+httpx.\_api module
+==================
+
+.. automodule:: httpx._api
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:

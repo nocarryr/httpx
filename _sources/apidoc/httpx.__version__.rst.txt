@@ -1,0 +1,8 @@
+httpx.\_\_version\_\_ module
+============================
+
+.. automodule:: httpx.__version__
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:

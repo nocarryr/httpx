@@ -1,0 +1,8 @@
+httpx.\_client module
+=====================
+
+.. automodule:: httpx._client
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:

@@ -1,0 +1,8 @@
+httpx.\_exceptions module
+=========================
+
+.. automodule:: httpx._exceptions
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:

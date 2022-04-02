@@ -1,0 +1,8 @@
+httpx.\_decoders module
+=======================
+
+.. automodule:: httpx._decoders
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:

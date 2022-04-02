@@ -1,0 +1,8 @@
+httpx.\_transports.default module
+=================================
+
+.. automodule:: httpx._transports.default
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:

@@ -1,0 +1,8 @@
+httpx.\_models module
+=====================
+
+.. automodule:: httpx._models
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:
