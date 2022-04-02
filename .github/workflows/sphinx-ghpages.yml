@@ -17,16 +17,17 @@ jobs:
         with:
           python-version: 3.9
 
+      - name: Install Project and Dependencies
+        run: |
+          python -m pip install -U pip setuptools wheel
+          pip install -e .
+          pip install Sphinx
       - uses: "actions/checkout@v2"
         with:
           ref: "sphinx-apidoc"
           path: "sphinx-apidoc"
       - name: Autogen apidoc
-        run: |
-          ls
-          ls $PY_SRC
-          ls $DOC_ROOT
-          ./sphinx-apidoc/update_sphinx_apidoc.py --py-src=$PY_SRC --doc-root=$DOC_ROOT
+        run: ./sphinx-apidoc/update_sphinx_apidoc.py --py-src=$PY_SRC --doc-root=$DOC_ROOT
         env:
           DOC_ROOT: ${{ github.workspace }}/sphinx-apidoc/sphinx-doc
           PY_SRC: ${{ github.workspace }}/httpx
