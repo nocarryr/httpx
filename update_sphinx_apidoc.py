@@ -13,14 +13,14 @@ DOC_ROOT = HERE / 'sphinx-doc'
 def setup_paths(doc_root=DOC_ROOT, py_src=PY_SRC):
     assert py_src.exists()
     doc_root.mkdir(exist_ok=True)
-    apidoc_path = doc_root / 'apidoc'
+    apidoc_path = doc_root / 'source' / 'apidoc'
     apidoc_path.mkdir(exist_ok=True)
     for p in apidoc_path.glob('*.rst'):
         print(f'removing "{p}"')
         p.unlink()
 
 def build_apidoc(doc_root=DOC_ROOT, py_src=PY_SRC):
-    apidoc_path = doc_root / 'apidoc'
+    apidoc_path = doc_root / 'source' / 'apidoc'
     cmd_str = f'sphinx-apidoc --private --separate -o {apidoc_path} {py_src}'
     print(cmd_str)
     proc = subprocess.run(shlex.split(cmd_str), check=True)
